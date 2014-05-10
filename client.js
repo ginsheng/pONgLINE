@@ -33,6 +33,14 @@ function start_game() {
  		init_player(rival);
  	});
 
+ 	SOCKET.on('you lose', function() {
+ 		alert('Has perdido');
+ 	});
+
+ 	SOCKET.on('you win', function() {
+ 		alert('Has ganado!');
+ 	});
+
 	set_keyListener();
 
 }

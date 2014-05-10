@@ -50,7 +50,7 @@ function init_player(settings) {
 }
 
 function init_ball(_ball) {
-	console.debug('This are my initial ball settings: ' + _ball.toString());
+	// console.debug('This are my initial ball settings: ' + _ball.toString());
 	ball = {
 		_settings: _ball,
 		draw: function(c) {
@@ -69,6 +69,8 @@ function set_keyListener() {
 		if (e.keyCode == 38 || e.keyCode == 40) {
 			rackets[0].move(e.keyCode);
 		}
+		if (e.keyCode == 32)
+			SOCKET.emit('paused', e.keyCode);
 	}
 }
 	

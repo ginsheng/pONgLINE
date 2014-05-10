@@ -5,9 +5,7 @@ function Racket(player) {
 	this._height = player._height;
 	this._width = player._width;
 	this._speed = player._speed;
-	this._x = player._number == 1 ?
-    			ball._settings._radius * 3 :
-    			GAME_SETTINGS._width - (ball._settings._radius * 3);
+	this._x = player._x;
 	this._y = player._y;
 }
 
