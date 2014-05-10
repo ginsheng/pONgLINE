@@ -4,16 +4,48 @@
 		"selected_items":
 		[
 			[
+				"GAE",
+				"GAME_FPS"
+			],
+			[
+				"GAME",
+				"GAME_HEIGHT"
+			],
+			[
+				"GA",
+				"GAME"
+			],
+			[
+				"ga",
+				"game_set"
+			],
+			[
+				"game",
+				"game_set"
+			],
+			[
+				"l",
+				"length"
+			],
+			[
+				"pla",
+				"players"
+			],
+			[
+				"plaer",
+				"player_num"
+			],
+			[
+				"player",
+				"player_num"
+			],
+			[
 				"pro",
 				"prototype"
 			],
 			[
 				"_",
 				"_x"
-			],
-			[
-				"player",
-				"player1"
 			],
 			[
 				"po",
@@ -24,20 +56,12 @@
 				"init_players"
 			],
 			[
-				"pla",
-				"player1"
-			],
-			[
 				"pl",
 				"player1"
 			],
 			[
 				"gam",
 				"GAME_HEIGHT"
-			],
-			[
-				"GA",
-				"GAME_WIDTH"
 			],
 			[
 				"GAM",
@@ -67,7 +91,7 @@
 			"file": "server.js",
 			"settings":
 			{
-				"buffer_size": 452,
+				"buffer_size": 1263,
 				"line_ending": "Unix"
 			}
 		},
@@ -75,7 +99,7 @@
 			"file": "racket.js",
 			"settings":
 			{
-				"buffer_size": 650,
+				"buffer_size": 681,
 				"line_ending": "Unix"
 			}
 		},
@@ -83,7 +107,7 @@
 			"file": "game.js",
 			"settings":
 			{
-				"buffer_size": 2271,
+				"buffer_size": 2546,
 				"line_ending": "Unix"
 			}
 		},
@@ -99,7 +123,7 @@
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 392.0,
+		"height": 47.0,
 		"selected_items":
 		[
 			[
@@ -111,7 +135,7 @@
 	},
 	"console":
 	{
-		"height": 0.0
+		"height": 139.0
 	},
 	"distraction_free":
 	{
@@ -195,7 +219,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 0,
 			"sheets":
 			[
 				{
@@ -210,8 +234,8 @@
 						"selection":
 						[
 							[
-								197,
-								197
+								0,
+								8
 							]
 						],
 						"settings":
@@ -273,15 +297,15 @@
 					"file": "server.js",
 					"settings":
 					{
-						"buffer_size": 452,
+						"buffer_size": 1263,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								375,
-								375
+								733,
+								741
 							]
 						],
 						"settings":
@@ -333,7 +357,7 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 108.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -343,15 +367,15 @@
 					"file": "racket.js",
 					"settings":
 					{
-						"buffer_size": 650,
+						"buffer_size": 681,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								36,
-								47
+								217,
+								217
 							]
 						],
 						"settings":
@@ -414,15 +438,15 @@
 					"file": "game.js",
 					"settings":
 					{
-						"buffer_size": 2271,
+						"buffer_size": 2546,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1880,
-								1880
+								719,
+								727
 							]
 						],
 						"settings":
@@ -474,7 +498,7 @@
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 228.0,
+						"translation.y": 38.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -583,6 +607,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.git":
+	{
+		"height": 112.0
+	},
 	"replace":
 	{
 		"height": 64.0

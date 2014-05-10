@@ -1,102 +1,80 @@
-GAME_WIDTH = 700;
-GAME_HEIGHT = 450;
-GAME_FPS = 30;
+// GAME_WIDTH = 700;
+// GAME_HEIGHT = 450;
+// GAME_FPS = 30;
 GAME_SPACE = '';
 
-function init() {
+function init_game() {
+
+	document.getElementById('start_buton').style.display = 'none';
+
+	GAME_FPS = GAME_SETTINGS._fps;
+	rackets = [];
 
 	var table = document.createElement('canvas');
 	table.id = 'table';
-	table.width = GAME_WIDTH;
-	table.height = GAME_HEIGHT;
+	table.width = GAME_SETTINGS._width;
+	table.height = GAME_SETTINGS._height;
 	table.style.border = 'black 1px solid';
 
 	document.body.appendChild(table);
 
     GAME_SPACE = document.getElementById("table");
 
-    init_ball();
-    init_players();
+    init_ball(GAME_SETTINGS._BALL);
+
+    init_player(PLAYER_SETTINGS);
 
     game = setInterval(function() {
-    	update();
     	draw(GAME_SPACE.getContext("2d"));
     }, 1000/GAME_FPS);
 
-    // var ctx = c.getContext("2d");
-    // ctx.fillStyle = "#FF3300";
-    // ctx.fillRect(0,0,150,75);
+    // This event tiggers when my opponent make a move
+	SOCKET.on('rival moves', function(position) {
+		// console.debug('Tu rival movi&oacute;: ' + position);
+		rackets[1]._y = position;
+	});
+
+	// Thie event triggers when server order to move the ball
+	SOCKET.on('move ball', function(_ball) {
+		ball._settings = _ball;
+	});
+
 }
 
-function init_players() {
-	player = new Racket('player1');
+function init_player(settings) {
 
-    player._color = 'blue';
+	var racket = new Racket(settings);
 
-    player._height = GAME_HEIGHT / 4;
+    rackets.push(racket);
 
-    player._x = ball._radius * 3;
-    //player2._x = GAME_WIDTH - player2._width;
-
-    player._y = (GAME_HEIGHT / 2) - (player._height / 2);
 }
 
-function init_ball() {
+function init_ball(_ball) {
+	console.debug('This are my initial ball settings: ' + _ball.toString());
 	ball = {
-		_color: 'black',
-		_x: 0,
-		_y: 15,
-		_radius: 15,
-		_speed: 7,
-		_factorX: 1,
-		_factorY: 1,
+		_settings: _ball,
 		draw: function(c) {
-			c.fillStyle = this._color;
+			c.fillStyle = this._settings._color;
 			c.beginPath();
-
-			if (this._x + this._radius > GAME_WIDTH)
-			// if (this._x + this._radius > player2._x - player2._width && this._x < player2._x)
-				this._factorX = -1;
-
-			if (this._x - this._radius < player._x + player._width && this._x > player._x)
-				if (this._y >= player._y && this._y <= player._y + player._height)
-					this._factorX = 1;
-
-			if (this._y + this._radius > GAME_HEIGHT)
-				this._factorY = -1;
-			if (this._y - this._radius < 0)
-				this._factorY = 1;
-
-			this._x = this._x + (this._speed * this._factorX);
-			this._y = this._y + (this._speed * this._factorY);
-
-			c.arc(this._x, this._y, this._radius, 0, 2*Math.PI);
+	
+			c.arc(this._settings._x, this._settings._y, this._settings._radius, 0, 2*Math.PI);
 			c.fill();
 			c.stroke();
-
-			if (this._x == 0) {
-				clearInterval(game);
-				socket.emit('player loses', { nombre_jugador: player._playerName })
-				alert('GAME OVER');
-			}
-		}
+		},
 	}
 }
-
-function update() {
+	
+function set_keyListener() {
 	document.onkeydown = function(e) {
 		if (e.keyCode == 38 || e.keyCode == 40) {
-			socket.emit('my player moves', { direction: e.keyCode });
-			socket.on('server update', function(data){
-				if (data.canMove = 'yes')
-					player.move(e.keyCode);
-			});
+			rackets[0].move(e.keyCode);
 		}
 	}
 }
-
+	
 function draw(c) {
-	c.clearRect(0, 0, GAME_WIDTH, GAME_HEIGHT);
-	player.draw(c);
+	c.clearRect(0, 0, GAME_SETTINGS._width, GAME_SETTINGS._height);
+	for (var racket in rackets)
+		rackets[racket].draw(c);
 	ball.draw(c);
 }
